@@ -12,6 +12,52 @@
 
   <link rel="stylesheet" href="css/style.css?v=2">
 	<link rel="stylesheet" type="text/css" href="css/screen.css" media="screen" />
+
+  <script type="text/x-handlebars" data-template-name="list">
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each cards}}
+        {{view DeckBuilder.ShowCardView cardBinding="this"}}
+        {{/each}}
+        {{#if isNewVisible}}
+        <tr>
+          <td>*</td>
+          <td>
+            {{view DeckBuilder.NewCardView}}
+          </td>
+        </tr>
+        {{/if}}
+      </tbody>
+    </table>
+    <div class="commands">
+      <a href="#" {{action "showNew"}}>New Card</a>
+    </div>
+  </script>
+
+  <script type="text/x-handlebars" data-template-name="show">
+    <td>{{card.name}}</td>
+    <td class="data">
+      {{card.description}}
+    </td>
+  </script>
+
+  <script type="text/x-handlebars" data-template-name="edit">
+    {{#with card}}
+      {{view Ember.TextField valueBinding="name" placeholder="Name"}}
+      {{view Ember.TextField valueBinding="description"  placeholder="Description"}}
+      <button type="submit">
+        {{#if id}}Update{{else}}Create{{/if}}
+      </button>
+    {{/with}}
+    <a href="#" {{action "cancelForm"}}>Cancel</a>
+  </script>
+
 </head>
 <body>
 
@@ -22,12 +68,12 @@
 	<div class="colleft">
 		<div class="col1">
 			<!-- Column 1 start -->
+      <h1>Cards</h1>
+
       <script type="text/x-handlebars">
-        {{#view App.MyView}}
-        <h1>Hello world!</h1>
-        {{/view}}
+        {{ view DeckBuilder.ListCardsView }}
       </script>
-      
+
       <!-- Column 1 end -->
 		</div>
 		<div class="col2">
@@ -43,7 +89,11 @@
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
   <script>window.jQuery || document.write('<script src="js/libs/jquery-1.7.2.min.js"><\/script>')</script>
   <script src="js/libs/ember-0.9.8.1.min.js"></script>
-  <script src="js/app.js"></script>
+  <script src="js/deckbuilder.js"></script>
+  <script src="js/deckbuilder.card.js"></script>
+  <script src="js/views/cards/show.js"></script>
+  <script src="js/views/cards/list.js"></script>
+  <script src="js/views/cards/new.js"></script>
 
 </body>
 </html>
