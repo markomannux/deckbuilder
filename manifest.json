@@ -1,0 +1,16 @@
+{
+  "name": "Deck builder",
+  "description": "Simple app to build and test card decks",
+  "version": "1",
+  "app": {
+    "launch": {
+      "local_path": "main.html"
+    }
+  },
+  "icons": {
+    "16": "img/Deck-01.jpg",
+    "32": "img/Deck-01.jpg",
+    "64": "img/Deck-01.jpg",
+    "128": "img/Deck-01.jpg"
+  }
+}
