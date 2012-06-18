@@ -22,4 +22,11 @@ describe("Card", function() {
     card.set('description', 'some card description');
     expect(card.get('description')).toEqual('some card description');
   });
+
+  describe("Has persistance behavior", function() {
+    it("can be saved", function() {
+      initDatabase('TEST_DB', true);
+      card.save();
+    });
+  });
 });
