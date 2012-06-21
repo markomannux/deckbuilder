@@ -25,8 +25,24 @@ describe("Card", function() {
 
   describe("Has persistance behavior", function() {
     it("can be saved", function() {
-      initDatabase('TEST_DB', true);
+      entityManager.initDatabase('TEST_DB', true);
       card.save();
+    });
+
+    it("sets id of saved object", function() {
+      entityManager.initDatabase('TEST_DB', true);
+
+      runs(function() {
+        card.save();
+      });
+
+      waitsFor(function() {
+        return card.id != undefined;
+      }, "The id should be set", 750);
+
+      runs(function() {
+        expect(card.get('id')).not.toBe(undefined);
+      });
     });
   });
 });

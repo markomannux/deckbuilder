@@ -1,1 +1,1 @@
-initDatabase('DECKBUILDER', false);
+entityManager.initDatabase('DECKBUILDER', false);

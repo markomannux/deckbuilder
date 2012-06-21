@@ -1,9 +1,10 @@
 DeckBuilder.Card = Ember.Object.extend({
+  id: undefined,
   name: 'no name',
   description: 'no description',
 
   save: function() {
-    insertCard(this);
+    entityManager.insertCard(this);
   }
 });
 

@@ -22,7 +22,8 @@ DeckBuilder.NewCardView = Ember.View.extend({
 
     event.preventDefault();
 
-    //TODO save the card
-
+    card.save();
+    DeckBuilder.cardsController.pushObject(card);
+    self.get("parentView").hideNew();
   }
 });

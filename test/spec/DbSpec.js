@@ -1,7 +1,7 @@
 describe("DB", function() {
 
   beforeEach(function () {
-    initDatabase("TEST_DB", true);
+    entityManager.initDatabase("TEST_DB", true);
   });
 
   it("should be created", function() {
